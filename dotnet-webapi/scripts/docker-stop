@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export app_name=${PWD##*/}
+
+echo stopping docker for $app_name
+docker stop $app_name

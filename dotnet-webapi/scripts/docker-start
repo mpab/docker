@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export app_name=${PWD##*/}
+
+echo running docker for $app_name
+
+image=$(docker images --format="{{.Repository}} {{.ID}}" | 
+grep ^$app_name | 
+cut -d' ' -f2)
+
+[ -z $image ] && echo "no image found for $app_name" && exit
+
+echo image: $image
+docker run --name $app_name -d --rm -p 3000:3000 $image
