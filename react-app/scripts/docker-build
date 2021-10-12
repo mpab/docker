@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export app_name=${PWD##*/}
+echo building docker for $app_name
+docker build -t $app_name .

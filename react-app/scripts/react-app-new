@@ -1,0 +1,11 @@
+#!/bin/sh
+
+[[ $_ = $0 ]] && echo "$0 must be run sourced" && exit
+
+export app_name=${PWD##*/}
+
+echo creating react project app
+rm -rf $app_name
+yarn create react-app $app_name --template typescript
+mv ./$app_name/* .
+rm -rf $app_name
